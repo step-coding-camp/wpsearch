@@ -103,7 +103,7 @@ class WikipediaCollection(Collection):
             WikipediaArticle: Returns matching WikipediaArticle.
         """
         c = self.db.cursor()
-        row = c.execute("SELECT title, text, opening_text, auxiliary_text, categories, headings, wiki_text, popularity_score, num_incoming_links FROM articles WHERE title LIKE ? || '%' LIMIT 1", (query,)).fetchone()
+        row = c.execute("SELECT title, text, opening_text, auxiliary_text, categories, headings, wiki_text, popularity_score, num_incoming_links FROM articles WHERE title=?", (query,)).fetchone()
         if row is None:
             return None
         return WikipediaArticle(self,

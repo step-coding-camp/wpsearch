@@ -6,7 +6,7 @@ import os
 collection = wp.WikipediaCollection("./data/wp.db")
 
 @bottle.route('/action')
-def search():
+def action():
    query = bottle.request.query.q
    bottle.response.content_type = 'application/json'
    return json.dumps({
